@@ -151,6 +151,9 @@ up(){
 	cd $d
 }
 
+# Use vi-mode in Bash
+set -o vi
+
 # This is where you put your hand rolled scripts (remember to chmod them)
 
 PATH="$HOME/bin:$PATH"
@@ -162,3 +165,5 @@ export EDITOR="$VISUAL"
 
 #Copy solution to home
 alias souba="source ~/.bashrc"
+
+
