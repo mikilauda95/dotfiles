@@ -1,0 +1,9 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/home/michele/.emacs.d'
+let g:netrw_dirhist_2='/home/michele/Documents/os/lab1/part2'
+let g:netrw_dirhist_3='/home/mikilauda/.oh-my-zsh'
+let g:netrw_dirhist_4='/home/mikilauda/.oh-my-zsh/.git'
+let g:netrw_dirhist_5='/home/mikilauda/Branch_prediction_whats_left/qemu_helpers'
+let g:netrw_dirhist_6='/home/mikilauda/Branch_prediction_whats_left/work/qemu'
+let g:netrw_dirhist_7='/home/mikilauda/dotfiles'
