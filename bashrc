@@ -159,36 +159,6 @@ PATH=$PATH:/sbin:/home/michele/sbin
 set -o vi
 export VISUAL=vim
 export EDITOR="$VISUAL"
-alias hackssh='ssh level2@hack-meeting.s3.eurecom.fr'
-# sudo mount -t ntfs -o nls=utf8,umask=0222 /dev/nvme0n1p3 ntfs_mount/
-#sudo sshfs simili@syssec-lab.s3.eurecom.fr:/home/simili/ /mnt/syssec/ -o IdentityFile=/home/michele/.ssh/id_rsa
-#xmodmap ~/.Xmodmap
-
-hostsoft="softdev.s3.eurecom.fr"
-
-homesoft="$hostsoft:/home/mikilauda"
-
-hostsec="syssec-lab.s3.eurecom.fr"
-
-homesec="$hostsec:/home/simili"
-
-cpsec(){
-    sftp simili@syssec-lab.s3.eurecom.fr:/home/simili/challenges/$1
-}
-
-cpsoft(){
-    scp -r "mikilauda@$homesoft/challenges/$1" .
-}
 
 #Copy solution to home
-
-subsoft(){
-    scp $2 "mikilauda@$homesoft/$1_sol.sh"
-}
-
-alias phone="nmcli dev wifi connect Mikilauda password mikilo00"
-alias conn_soft="ssh mikilauda@$hostsoft"
-alias conn_sec="ssh simili@$hostsec"
 alias souba="source ~/.bashrc"
-alias worksoft="cd ~/Documents/softdev/challenges/"
-alias mount_soft="sudo sshfs mikilauda@$hostsoft:/home/mikilauda/ ~/soft_mount; cd ~/soft_mount"
