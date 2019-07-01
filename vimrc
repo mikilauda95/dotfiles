@@ -52,8 +52,8 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
-
 " }}}
+"
 " Leader Shortcuts {{{
 let mapleader = "\<Space>" 
 noremap <leader>m :silent make\|redraw!\|cw<CR>
@@ -69,7 +69,7 @@ nnoremap <leader><space> :noh<CR>
 nnoremap <leader>s :mksession<CR>
 nnoremap <leader>a :Ag
 nnoremap <leader>c :SyntasticCheck<CR>:Errors<CR>
-nnoremap <leader>n :NERDTree<CR>
+nnoremap <leader>n :NERDTreeToggle<CR>
 nnoremap <leader>1 :set number!<CR>
 nnoremap <leader>d :Make!
 nnoremap <leader>r :TestFile<CR>
@@ -80,6 +80,8 @@ nmap Y y$
 nnoremap ss a<space><Esc>
 nnoremap <C-m> m`o<Esc>``
 nnoremap <C-i> m`O<Esc>``
+nnoremap <leader>e<leader> :e#<CR>
+
 " }}}
 
 " CtrlP {{{
@@ -89,10 +91,11 @@ let g:ctrlp_working_path_mode = 0
 let g:ctrlp_custom_ignore = '\vbuild/|dist/|venv/|target/|\.(o|swp|pyc|egg)$'
 " }}}
 " Syntastic {{{
-let g:syntastic_python_flake8_args='--ignore=E501'
-let g:syntastic_ignore_files = ['.java$']
-let g:syntastic_python_python_exec = 'python3'
+"let g:syntastic_python_flake8_args='--ignore=E501'
+"let g:syntastic_ignore_files = ['.java$']
+"let g:syntastic_python_python_exec = 'python3'
 " }}}
+nnoremap <C-F> :CommandT<CR>
 " AutoGroups {{{
 augroup configgroup
     autocmd!
@@ -146,7 +149,7 @@ Plug 'scrooloose/nerdtree'
 "Plug 'Valloric/YouCompleteMe'
 Plug 'nvie/vim-flake8'
 Plug 'jistr/vim-nerdtree-tabs'
-Plug 'klen/python-mode'
+"Plug 'klen/python-mode'
 Plug 'gabrielelana/vim-markdown'
 Plug 'shime/vim-livedown'
 Plug 'lervag/vimtex'
@@ -157,6 +160,10 @@ Plug 'lervag/vimtex'
 "Plug 'abudden/taghighlight-automirror'
 Plug 'jnurmine/Zenburn'
 Plug 'tpope/vim-surround'
+Plug 'rking/ag.vim'
+Plug 'wincent/command-t', {
+\   'do': 'cd ruby/command-t/ext/command-t && ruby extconf.rb && make'
+\ }
 
 call plug#end()
 " }}}
@@ -249,7 +256,7 @@ set background=dark
 	"
 	"	
 	"	python mode deactivate dot
-    let g:pymode_rope_complete_on_dot = 0
+    "let g:pymode_rope_complete_on_dot = 0
 
 	
 
