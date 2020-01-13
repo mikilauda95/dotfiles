@@ -52,6 +52,8 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+nnoremap <C-W><C-H> :tabprevious<CR>
+nnoremap <C-W><C-L> :tabnext<CR>
 " }}}
 "
 " Leader Shortcuts {{{
@@ -64,15 +66,13 @@ nnoremap <leader>et :exec ":vsp /users/dblack/notes/vim/" . strftime('%m-%d-%y')
 nnoremap <leader>em :vsp ~/.bashrc<CR>
 nnoremap <leader>ez :vsp ~/.zshrc<CR>
 nnoremap <leader>sv :source $MYVIMRC<cr>
-"nnoremap <leader>l :call togglenumber()<cr>
+nnoremap <leader>r :call Togglenumber()<cr>
 nnoremap <leader><space> :noh<CR>
 nnoremap <leader>s :mksession<CR>
-nnoremap <leader>a :Ag
-nnoremap <leader>c :SyntasticCheck<CR>:Errors<CR>
 nnoremap <leader>n :NERDTreeToggle<CR>
 nnoremap <leader>1 :set number!<CR>
 nnoremap <leader>d :Make!
-nnoremap <leader>r :TestFile<CR>
+"nnoremap <leader>r :TestFile<CR>
 nnoremap <leader>g :call RunGoFile()<CR>
 vnoremap <leader>y "+y
 vnoremap <leader>p "+p
@@ -81,21 +81,23 @@ nnoremap ss a<space><Esc>
 nnoremap <C-m> m`o<Esc>``
 nnoremap <C-i> m`O<Esc>``
 nnoremap <leader>e<leader> :e#<CR>
+nnoremap <leader>s<leader> :SyntasticCheck<CR>:Errors<CR>
+nnoremap <leader>b :Buffers<CR>
+nnoremap <leader>a :Ag<space>
+nnoremap <Leader>l :BLines<CR>
+nnoremap <Leader>t :Tags<CR>
+nnoremap <leader>f :FZF<CR>
+
+
 
 " }}}
 
-" CtrlP {{{
-let g:ctrlp_match_window = 'bottom,order:ttb'
-let g:ctrlp_switch_buffer = 0
-let g:ctrlp_working_path_mode = 0
-let g:ctrlp_custom_ignore = '\vbuild/|dist/|venv/|target/|\.(o|swp|pyc|egg)$'
 " }}}
 " Syntastic {{{
 "let g:syntastic_python_flake8_args='--ignore=E501'
-"let g:syntastic_ignore_files = ['.java$']
+let g:syntastic_ignore_files = ['.java$']
 "let g:syntastic_python_python_exec = 'python3'
 " }}}
-nnoremap <C-F> :CommandT<CR>
 " AutoGroups {{{
 augroup configgroup
     autocmd!
@@ -131,7 +133,6 @@ Plug 'jimmysitu/pyclewn'
 Plug 'derekwyatt/vim-scala'
 Plug 'janko-m/vim-test'
 Plug 'keith/swift.vim'
-Plug 'kien/ctrlp.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'moll/vim-node'
 Plug 'scrooloose/syntastic'
@@ -161,9 +162,14 @@ Plug 'lervag/vimtex'
 Plug 'jnurmine/Zenburn'
 Plug 'tpope/vim-surround'
 Plug 'rking/ag.vim'
-Plug 'wincent/command-t', {
-\   'do': 'cd ruby/command-t/ext/command-t && ruby extconf.rb && make'
-\ }
+"Plug 'wincent/command-t', {
+"\   'do': 'cd ruby/command-t/ext/command-t && ruby extconf.rb && make'
+"\ }
+Plug 'junegunn/fzf', {'dir':'~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'vim-scripts/taglist.vim'
+Plug 'vim-scripts/tinymode.vim'
+Plug 'jlanzarotta/bufexplorer'
 
 call plug#end()
 " }}}
@@ -235,10 +241,10 @@ endfunction
 "set statusline+=%{SyntasticStatusFlag()}
 "set statusline+=%*
 
-let g:syntastic_always_populate_loc_list=1
-let g:syntastic_auto_loc_list=1
-let g:syntastic_check_on_open=1
-let g:syntastic_check_on_wq=0
+"let g:syntastic_always_populate_loc_list=1
+"let g:syntastic_auto_loc_list=1
+"let g:syntastic_check_on_open=1
+"let g:syntastic_check_on_wq=0
 "let g:ycm_global_ycm_extra_conf = "~/.ycm_extra_conf.py"
 set background=dark
 "this to make YCM compatible with syntastic
@@ -270,3 +276,40 @@ nmap gm :LivedownToggle<CR>
 let g:tex_flavor = "latex"
 let g:vimtex_view_general_viewer = 'okular'
 set shellslash=0
+
+" This is the default extra key bindings
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
+
+" Default fzf layout
+" - down / up / left / right
+let g:fzf_layout = { 'down': '~40%' }
+
+" In Neovim, you can set up fzf window using a Vim command
+let g:fzf_layout = { 'window': 'enew' }
+let g:fzf_layout = { 'window': '-tabnew' }
+let g:fzf_layout = { 'window': '10new' }
+
+" Customize fzf colors to match your color scheme
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+
+" Enable per-command history.
+" CTRL-N and CTRL-P will be automatically bound to next-history and
+" previous-history instead of down and up. If you don't like the change,
+" explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
+let g:fzf_history_dir = '~/.local/share/fzf-history'

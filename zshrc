@@ -270,3 +270,5 @@ alias reset_netw="sudo service network-manager restart"
 
 # For vim
 alias vim 'vim --servername vim' 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

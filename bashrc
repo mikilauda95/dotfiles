@@ -76,6 +76,7 @@ esac
 if [ -x /usr/bin/dircolors ]; then
 	test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 	alias ls='ls --color=auto'
+	alias df='df -BM'
 	#alias dir='dir --color=auto'
 	#alias vdir='vdir --color=auto'
 
@@ -234,4 +235,7 @@ DF='\[\e[0m\]'
 PS1="[${UC}\u${RC}@${HC}\h ${RC}\W${DF}] ${SC}${DF} "
 }
 
-cd $WORK
+#cd $WORK
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+#export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude tmp-glibc'
