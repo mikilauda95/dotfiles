@@ -8,7 +8,7 @@
 
 dir=${PWD}	                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-files="bashrc vimrc vim zshrc oh-my-zsh config/i3/config"    # list of files/folders to symlink in homedir .config missing
+files="bashrc vimrc vim zshrc oh-my-zsh config/i3/config xprofile"    # list of files/folders to symlink in homedir .config missing
 
 ##########
 
