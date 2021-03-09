@@ -170,6 +170,7 @@ alias souba="source ~/.bashrc"
 alias modba="vim ~/.bashrc"
 export WORK="/local/mnt/workspace/msimili"
 alias work="cd $WORK"
+alias coll="cd /local/mnt/workspace/collection/"
 
 export RAMPARSE="/local/mnt/workspace/msimili/tools/linux-ramdump-parser-v2/ramparse.py"
 alias ramparse="python $RAMPARSE"
@@ -235,7 +236,18 @@ DF='\[\e[0m\]'
 PS1="[${UC}\u${RC}@${HC}\h ${RC}\W${DF}] ${SC}${DF} "
 }
 
+# ctrl-W erase modification to delete up to slash
+stty werase undef
+bind '\C-w:unix-filename-rubout'
+
 #cd $WORK
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 #export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude tmp-glibc'
+#export PATH=$PATH:/prj/qct/asw/qctss/linux/bin/vce
+#export PATH=$PATH:/pkg/qct/software/perforce/bin
+export P4PORT=qctp401:1666
+export P4USER=msimili
+export P4CONFIG=.p4config # dot p4config
+alias vce='/prj/qct/asw/qctss/linux/bin/vce/vce.py'
+#export PATH=~/bin:$PATH

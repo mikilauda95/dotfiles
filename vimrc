@@ -8,6 +8,14 @@ syntax enable           " enable syntax processing
 " Misc {{{
 set backspace=indent,eol,start
 
+
+" Change VIMHOME variable to /local/mnt/workspace/msimili/
+let &runtimepath='/local/mnt/workspace/msimili/.vim/'
+let $VIMHOME = '/local/mnt/workspace/msimili/.vim/'
+
+" Nerdtree change directory behavior
+let g:NERDTreeChDirMode = 2
+
 let g:vimwiki_list = [{'path': '~/.wiki/'}]
 " }}}
 " Spaces & Tabs {{{
@@ -125,7 +133,7 @@ set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set writebackup
 " }}}
 " Vim Plug {{{
-call plug#begin('~/.vim/plugged')
+call plug#begin("$VIMHOME/plugged")
 "Plug 'gisphm/easycolor-mirror'
 "Plug 'vim-scripts/Vimball'
 Plug 'jimmysitu/pyclewn'
