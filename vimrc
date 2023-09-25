@@ -1,5 +1,9 @@
 "Douglas Black " Colors {{{ 
 syntax enable           " enable syntax processing
+"if has("syntax")
+"  syntax off
+"endif
+
 "for color scheme
 "syntax on
 "colorscheme bandit
@@ -8,10 +12,6 @@ syntax enable           " enable syntax processing
 " Misc {{{
 set backspace=indent,eol,start
 
-
-" Change VIMHOME variable to /local/mnt/workspace/msimili/
-let &runtimepath='/local/mnt/workspace/msimili/.vim/'
-let $VIMHOME = '/local/mnt/workspace/msimili/.vim/'
 
 " Nerdtree change directory behavior
 let g:NERDTreeChDirMode = 2
@@ -131,6 +131,7 @@ set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set backupskip=/tmp/*,/private/tmp/*
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set writebackup
+let $VIMHOME='/home/kali/.vim'
 " }}}
 " Vim Plug {{{
 call plug#begin("$VIMHOME/plugged")
@@ -143,14 +144,14 @@ Plug 'janko-m/vim-test'
 Plug 'keith/swift.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'moll/vim-node'
-Plug 'scrooloose/syntastic'
+"Plug 'scrooloose/syntastic'
 Plug 'simnalamburt/vim-mundo'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vimwiki/vimwiki'
 "Plug 'JPR75/vip' "Activate for VHDL. Manage the conflict"
-Plug 'SirVer/ultisnips'
+"Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'scrooloose/nerdcommenter'
 Plug 'jiangmiao/auto-pairs'

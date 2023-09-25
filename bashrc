@@ -168,9 +168,9 @@ export SHELL=/bin/bash
 #Copy solution to home
 alias souba="source ~/.bashrc"
 alias modba="vim ~/.bashrc"
-export WORK="/local/mnt/workspace/msimili"
+export WORK="/home/kali/workspace/"
 alias work="cd $WORK"
-alias coll="cd /local/mnt/workspace/collection/"
+alias coll="cd $WORK/collection/"
 
 export RAMPARSE="/local/mnt/workspace/msimili/tools/linux-ramdump-parser-v2/ramparse.py"
 alias ramparse="python $RAMPARSE"
@@ -251,3 +251,4 @@ export P4USER=msimili
 export P4CONFIG=.p4config # dot p4config
 alias vce='/prj/qct/asw/qctss/linux/bin/vce/vce.py'
 #export PATH=~/bin:$PATH
+. "$HOME/.cargo/env"
