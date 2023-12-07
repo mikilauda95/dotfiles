@@ -71,6 +71,7 @@ bindkey -v
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
+  git-prompt
   vi-mode
   chucknorris
   terminalapp
@@ -223,7 +224,7 @@ export PATH="/opt/eclipse/:$PATH"
 export PATH="/opt/Postman/:$PATH"
 export PATH="/opt/AppImages/:$PATH"
 
-export DENO_INSTALL="/home/kali/.deno"
+export DENO_INSTALL="/home/simili/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 export PATH=$PATH:/sbin:/home/$USER/sbin
 export PATH=$PATH:/usr/bin/
@@ -524,3 +525,6 @@ PATH=$PATH:$GOROOT/bin/:$GOPATH/bin
 # find file by name in current directory
 function _fn() { find . -iname "*$1*";}
 alias fn=_fn
+
+: undercover && export PS1='C:${PWD//\//\\}> '
+: undercover && new_line_before_prompt=no
