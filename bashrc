@@ -1,3 +1,5 @@
+#exec $(which zsh)
+
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -243,12 +245,4 @@ bind '\C-w:unix-filename-rubout'
 #cd $WORK
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-#export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude tmp-glibc'
-#export PATH=$PATH:/prj/qct/asw/qctss/linux/bin/vce
-#export PATH=$PATH:/pkg/qct/software/perforce/bin
-export P4PORT=qctp401:1666
-export P4USER=msimili
-export P4CONFIG=.p4config # dot p4config
-alias vce='/prj/qct/asw/qctss/linux/bin/vce/vce.py'
-#export PATH=~/bin:$PATH
-. "$HOME/.cargo/env"
+: undercover && export PS1='C:${PWD//\//\\\}> '
