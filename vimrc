@@ -131,7 +131,7 @@ set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set backupskip=/tmp/*,/private/tmp/*
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set writebackup
-let $VIMHOME='/home/kali/.vim'
+let $VIMHOME='$HOME/.vim'
 " }}}
 " Vim Plug {{{
 call plug#begin("$VIMHOME/plugged")
