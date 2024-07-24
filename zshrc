@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 #set vim mode in zsh
 
 bindkey -v
@@ -11,7 +18,7 @@ bindkey -v
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
- ZSH_THEME="robbyrussell"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 #ZSH_THEME="honukai"
 # In order to use Pure you need to disable default theme folder 
 # ZSH_THEME=""
@@ -70,17 +77,22 @@ bindkey -v
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+  alias-finder
   git
   git-prompt
   vi-mode
   chucknorris
-  terminalapp
   npm
-  copydir
+  copypath
   copyfile
   cp
   colorize
   dircycle
+  zsh-syntax-highlighting
+  zsh-autosuggestions
+  zsh-interactive-cd
+  zsh-navigation-tools
+  web-search
   z
 )
 
@@ -230,13 +242,12 @@ export PATH=$PATH:/sbin:/home/$USER/sbin
 export PATH=$PATH:/usr/bin/
 export PATH="$HOME/.linuxbrew/bin:$PATH"
 
-alias nvim="nvim.appimage"
-alias vim="/opt/AppImages/nvim.appimage"
+alias vim=nvim
 
 export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
 export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
 set -o vi
-export VISUAL="/opt/AppImages/nvim.appimage"
+export VISUAL="nvim"
 export EDITOR="$VISUAL"
 # sudo mount -t ntfs -o nls=utf8,umask=0222 /dev/nvme0n1p3 ntfs_mount/
 #sudo sshfs simili@syssec-lab.s3.eurecom.fr:/home/simili/ /mnt/syssec/ -o IdentityFile=/home/$USER/.ssh/id_rsa
@@ -507,7 +518,7 @@ fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# Mount NFS 
+# Mount NFS
 alias mountnfs="mount /home/kali/nfs"
 
 # Easy work directory moving
@@ -515,16 +526,33 @@ alias mountnfs="mount /home/kali/nfs"
 export WORK="/home/kali/workspace/"
 alias work="cd $WORK"
 
-# Go variables and path
-# https://brain2life.hashnode.dev/how-to-install-the-stable-version-of-go-on-kali-linux
-export GOPATH=/root/go-workspace
-export GOROOT=/usr/local/go
-PATH=$PATH:$GOROOT/bin/:$GOPATH/bin
-
-
 # find file by name in current directory
 function _fn() { find . -iname "*$1*";}
 alias fn=_fn
 
-: undercover && export PS1='C:${PWD//\//\\}> '
-: undercover && new_line_before_prompt=no
+export MANPATH=$HOME/tools/ripgrep/doc/man:$MANPATH
+export FPATH=$HOME/tools/ripgrep/complete:$FPATH
+export PATH=$PATH:"/home/msimili/tools/nvim/bin/"
+alias vim=nvim
+export EDITOR=nvim
+export MANPATH=$HOME/tools/ripgrep/doc/man:$MANPATH
+export FPATH=$HOME/tools/ripgrep/complete:$FPATH
+alias vim=nvim
+export PATH=$PATH:"/home/msimili/tools/nvim/bin/"
+export EDITOR=nvim
+export PATH=$PATH:"$HOME/bin/":
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Favorite Aliases
+alias agu='sudo apt-get update'
+alias agi='sudo apt-get install'
+alias agd='sudo apt-get dist-upgrade'
+alias agr='sudo apt-get remove'
+alias ags='sudo aptitude search'
+alias agsh='sudo apt-cache show'
+alias afs='sudo apt-file search'
+alias afsh='sudo apt-file show'
+alias afu='sudo apt-file update'
+

@@ -19,8 +19,8 @@ let g:NERDTreeChDirMode = 2
 let g:vimwiki_list = [{'path': '~/.wiki/'}]
 " }}}
 " Spaces & Tabs {{{
-set tabstop=4           " 4 space tab set expandtab           " use spaces for tabs
-set softtabstop=4       " 4 space tab
+set tabstop=8           " 4 space tab set expandtab           " use spaces for tabs
+set softtabstop=8       " 4 space tab
 set shiftwidth=4
 set modelines=1
 filetype indent on
